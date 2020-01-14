@@ -9,6 +9,7 @@ public class GearRotation {
 
 		Input();
 		FullRotate();
+		//count the point
 		int point = 0;
 		for(int i=0; i<4; i++) {
 			if(gear[i][0]==1) {
@@ -48,18 +49,9 @@ public class GearRotation {
 			CheckLeftGear(gear, s, wise, start);
 			CheckRightGear(gear, s, wise, start);
 			Rotate(wise, s);
-			/*
-			for(int j=0; j<4; j++) {
-				for(int t=0; t<8; t++) {
-					System.out.print(gear[j][t]);
-				}
-				System.out.println("");
-			}*/
 		}
 	}
 	public static void CheckLeftGear(int[][] gear, int s, int wise, int start) {
-		//System.out.println("checkLeft"+s);
-		//System.out.println("wise : "+wise);
 		if(s>0) {
 			if(gear[s][6]!=gear[s-1][2])
 				CheckLeftGear(gear, s-1, wise*(-1), start);
@@ -68,8 +60,6 @@ public class GearRotation {
 			Rotate(wise, s);
 	}
 	public static void CheckRightGear(int[][] gear, int s, int wise, int start) {
-		//System.out.println("checkRight"+s);
-		//System.out.println("wise : "+wise);
 		if(s<3) {
 			if(gear[s][2]!=gear[s+1][6])
 				CheckRightGear(gear, s+1, wise*(-1), start);
@@ -78,14 +68,12 @@ public class GearRotation {
 			Rotate(wise, s);
 	}
 	public static void Clockwise(int n) {
-		//System.out.println("clockwise"+n);
 		int temp = gear[n][7];
 		for(int i = 7; i>0; i--) 
 			gear[n][i] = gear[n][i-1]; 
 		gear[n][0] = temp;
 	}
 	public static void CounterClockwise(int n) {
-		//System.out.println("counterclockwise"+n);
 		int temp = gear[n][0];
 		for(int i=0; i<7; i++)
 			gear[n][i] = gear[n][i+1];
